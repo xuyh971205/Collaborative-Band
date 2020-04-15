@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_aboutme"
+    app:startDestination="@+id/navigation_playlists">
+
+    <fragment
+        android:id="@+id/navigation_playlists"
+        android:name="com.example.collaborativeband.ui.playlists.PlaylistsFragment"
+        android:label="@string/title_playlists"
+        tools:layout="@layout/fragment_playlists" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_library"
+        android:name="com.example.collaborativeband.ui.library.LibraryFragment"
+        android:label="@string/title_library"
+        tools:layout="@layout/fragment_library" />
+
+    <fragment
+        android:id="@+id/navigation_aboutme"
+        android:name="com.example.collaborativeband.ui.aboutme.AboutMeFragment"
+        android:label="@string/title_aboutme"
+        tools:layout="@layout/fragment_aboutme" />
+
+
+
+</navigation>
