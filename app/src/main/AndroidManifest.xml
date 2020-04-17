@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SongRecognizing" />
+        <activity android:name=".ui.SongInfo"></activity>
+        <activity android:name=".ui.addanewsong.addanewsongActivity" />
+        <activity android:name=".ui.SongRecognizing" />
         <activity android:name=".ui.addanewplaylist.AddsongsActivity">
             <intent-filter>
                 <action android:name=".ui.addanewplaylist.AddsongsActivity" />

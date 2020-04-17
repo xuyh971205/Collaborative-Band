@@ -1,10 +1,12 @@
-package com.example.collaborativeband;
+package com.example.collaborativeband.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.collaborativeband.R;
 
 public class SongRecognizing extends AppCompatActivity {
 

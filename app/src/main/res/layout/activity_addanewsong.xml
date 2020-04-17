@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addanewplaylist.addanewplaylistActivity">
+    tools:context=".ui.addanewsong.addanewsongActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_addaplaylist"
+            android:id="@+id/toolbar_addanewsong"
             style="@style/ToolbarStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -25,25 +24,21 @@
             app:popupTheme="@style/OverflowMenuStyle"
             app:titleTextColor="#FFFFFF"
             app:navigationIcon="@drawable/ic_close"
-            app:title="Create a new playlist">
+            app:title="Add a new song into library">
 
             <Button
-                android:id="@+id/addanewplaylist_next"
+                android:id="@+id/addanewsong_finish_button"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="right"
                 android:layout_marginEnd="17dp"
-                android:background="@drawable/ic_arrow_right"
-                android:stateListAnimator="@null"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                />
+                android:background="@drawable/ic_done"
+                android:stateListAnimator="@null"/>
 
         </androidx.appcompat.widget.Toolbar>
 
         <EditText
-            android:id="@+id/editText_newPlaylist_name"
+            android:id="@+id/editText_newSong_name"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -56,80 +51,108 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText_newPlaylist_date"
+            android:id="@+id/editText_newSong_style"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/shape_white_frame"
-            android:hint="Date"
-            android:inputType="date"
+            android:hint="Style"
+            android:inputType="textCapWords"
             android:maxLength="20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText_newPlaylist_startat"
+            android:id="@+id/editText_newSong_language"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/shape_white_frame"
-            android:hint="Start at"
+            android:hint="Language"
+            android:inputType="textCapWords"
+            android:maxLength="20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_newSong_time"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/shape_white_frame"
+            android:hint="Time"
             android:inputType="time"
             android:maxLength="20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText_newPlaylist_endat"
+            android:id="@+id/editText_newSong_key"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/shape_white_frame"
-            android:hint="End at"
-            android:inputType="time"
-            android:maxLength="20"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText_newPlaylist_location"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/shape_white_frame"
-            android:hint="Location"
+            android:hint="Key"
             android:inputType="text"
-            android:maxLength="20"
+            android:maxLength="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText_newPlaylist_note"
+            android:id="@+id/editText_newSong_instruments"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/shape_white_frame"
+            android:hint="Instruments"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_newSong_note"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/shape_white_frame"
             android:hint="Note"
-            android:inputType="textMultiLine"
+            android:inputType="text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!--Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_gravity="right"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:background="@color/colorPrimary"
-            android:text="Next"
-            android:textColor="#FFFFFF"/-->
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_newSong_uploadAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+
+                android:text="Audio"
+                android:layout_gravity="center"
+                />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_margin="24dp"
+                android:background="@drawable/shape_white_frame"
+                android:text="Upload"
+                android:textColor="@color/colorPrimary"
+                android:textSize="11dp"/>
+        </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
