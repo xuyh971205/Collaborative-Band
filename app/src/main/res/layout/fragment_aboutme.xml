@@ -22,7 +22,6 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:src="@drawable/audience"
-
             app:riv_oval="true"
             android:scaleType="centerCrop"/>
 
