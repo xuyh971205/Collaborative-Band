@@ -11,13 +11,19 @@ import android.widget.Button;
 
 import com.example.collaborativeband.MainActivity;
 import com.example.collaborativeband.R;
+import com.example.collaborativeband.database.MyDatabaseHelper;
 
 public class addanewplaylistActivity extends AppCompatActivity {
+
+    private MyDatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_a_new_playlist);
 
+        dbHelper = new MyDatabaseHelper(this, "Playlists.db", null, 1);
+        dbHelper.getWritableDatabase();
 
         /*
         * The following code are hardcoding to navigate between MainActivity and other activities.

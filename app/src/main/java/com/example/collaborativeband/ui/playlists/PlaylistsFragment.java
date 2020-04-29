@@ -1,30 +1,30 @@
 package com.example.collaborativeband.ui.playlists;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ListView;
 
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.ui.NavigationUI;
 
-import com.example.collaborativeband.MainActivity;
 import com.example.collaborativeband.R;
 import com.example.collaborativeband.ui.addanewplaylist.addanewplaylistActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaylistsFragment extends Fragment {
 
     private PlaylistsViewModel playlistsViewModel;
+    private ListView mLvMsgList;
+    private List<Playlist> mDatas = new ArrayList<>();
+    private PlaylistAdapter mAdapter;
+
     private Button btn1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,10 +57,17 @@ public class PlaylistsFragment extends Fragment {
 
         //
 
+        mLvMsgList = getActivity().findViewById(R.id.listview_PlaylistList);
 
+        /**
+         * 多调用两次，数据会更多
+         */
+        mDatas.addAll(PlaylistsListHolder.generatePlaylistList());
+        mDatas.addAll(PlaylistsListHolder.generatePlaylistList());
 
+        mAdapter = new PlaylistAdapter(this.getContext(), mDatas);
 
-
+        mLvMsgList.setAdapter(mAdapter);
 
 
 

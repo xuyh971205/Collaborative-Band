@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SongInfo"></activity>
+        <activity android:name=".ui.library.SongInfo" ></activity>
         <activity android:name=".ui.addanewsong.addanewsongActivity" />
         <activity android:name=".ui.SongRecognizing" />
         <activity android:name=".ui.addanewplaylist.AddsongsActivity">
@@ -22,7 +22,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan"> <!-- 使软键盘不挡住输入框 -->
+            android:windowSoftInputMode="adjustPan"> <!-- Prevent keyboard from blocking textView -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

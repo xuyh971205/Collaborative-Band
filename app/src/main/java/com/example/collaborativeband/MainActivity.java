@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
         /*// update an existing data in the database.
         Button updateData = (Button) findViewById(R.id.update_data);
         updateData.setOnClickListener(new View.OnClickListener() {

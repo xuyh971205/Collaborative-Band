@@ -9,13 +9,25 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_LIBRARY = "create table Song ("
             + "id integer primary key autoincrement, "
             + "name text, "
+            + "singer text,"
             + "style text, "
             + "language text, "
             + "time text, "
             + "song_key text, "
             + "instruments text, "
             + "note text,"
-            + "practiced number)";
+            + "practiced number, "
+            + "full_path text)";
+
+    public static final String CREATE_PLAYLISTS = "create table Playlists("
+            + "id integer primary key autoincrement, "
+            + "name text, "
+            + "date date, "
+            + "start_at time, "
+            + "end_at time, "
+            + "location text, "
+            + "note text, "
+            + "songs text)";
 
 
     private Context mContext;
@@ -29,6 +41,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_LIBRARY);
+        Toast.makeText(mContext, "Create library succeeded", Toast.LENGTH_SHORT).show();
+
+        db.execSQL(CREATE_PLAYLISTS);
         Toast.makeText(mContext, "Create library succeeded", Toast.LENGTH_SHORT).show();
     }
 

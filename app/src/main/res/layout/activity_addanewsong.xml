@@ -33,6 +33,9 @@
                 android:layout_gravity="right"
                 android:layout_marginEnd="17dp"
                 android:background="@drawable/ic_done"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:stateListAnimator="@null"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -45,6 +48,19 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/shape_white_frame"
             android:hint="Name"
+            android:inputType="text"
+            android:maxLength="20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_newSong_singer"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/shape_white_frame"
+            android:hint="Singer"
             android:inputType="textPersonName"
             android:maxLength="20"
             app:layout_constraintStart_toStartOf="parent"

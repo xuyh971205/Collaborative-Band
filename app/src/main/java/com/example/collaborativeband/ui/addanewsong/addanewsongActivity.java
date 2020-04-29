@@ -46,6 +46,7 @@ public class addanewsongActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
 
                 EditText newSong_name = (EditText) findViewById(R.id.editText_newSong_name);
+                EditText newSong_singer = (EditText) findViewById(R.id.editText_newSong_singer);
                 EditText newSong_style = (EditText) findViewById(R.id.editText_newSong_style);
                 EditText newSong_language = (EditText) findViewById(R.id.editText_newSong_language);
                 EditText newSong_time = (EditText) findViewById(R.id.editText_newSong_time);
@@ -56,6 +57,7 @@ public class addanewsongActivity extends AppCompatActivity {
                 // get input data from editText
                 // NOTE: getText() method should be used "in" onClick(), otherwise it cannot get the text.
                 String name = newSong_name.getText().toString();
+                String singer = newSong_singer.getText().toString();
                 String style = newSong_style.getText().toString();
                 String language = newSong_language.getText().toString();
                 String time = newSong_time.getText().toString();
@@ -65,6 +67,7 @@ public class addanewsongActivity extends AppCompatActivity {
 
                 // Build the data group, by using values.
                 values.put("name", name);
+                values.put("singer", singer);
                 values.put("style", style);
                 values.put("language", language);
                 values.put("time", time);
@@ -73,10 +76,10 @@ public class addanewsongActivity extends AppCompatActivity {
                 values.put("note", note);
                 values.put("practiced", 0);
 
-                // Put the data group in the values into the database.
+                // Put the data group into the SongLibray.db database.
                 db.insert("Song", null, values);
 
-                // Clear the "container"-- values.
+                // Clear the "container" values.
                 values.clear();
             }
         });
