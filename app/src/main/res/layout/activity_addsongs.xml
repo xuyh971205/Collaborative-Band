@@ -37,17 +37,14 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <!--Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_gravity="right"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:background="@color/colorPrimary"
-            android:text="Next"
-            android:textColor="#FFFFFF"/-->
-
+        <ListView
+            android:id="@+id/listview_SonglistForCreatingANewPlaylist"
+            android:layout_width="match_parent"
+            android:layout_height="613dp"
+            android:layout_marginTop="1dp"
+            android:divider="#E8E8E8"
+            android:dividerHeight="1px"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

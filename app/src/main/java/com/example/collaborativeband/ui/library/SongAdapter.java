@@ -50,7 +50,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         return view;
     }
 
-    class ViewHolder {
+    public class ViewHolder {
         ImageView songImage;
         TextView songName;
         TextView songSinger;

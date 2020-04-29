@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.collaborativeband.R;
+import com.example.collaborativeband.database.CommonDatabase;
 import com.example.collaborativeband.database.MyDatabaseHelper;
 import com.example.collaborativeband.ui.addanewplaylist.addanewplaylistActivity;
+import com.example.collaborativeband.ui.library.SongInfo;
 
 public class addanewsongActivity extends AppCompatActivity {
 
@@ -33,16 +37,13 @@ public class addanewsongActivity extends AppCompatActivity {
             }
         });
 
-        // Create the database SongLibrary.db, without clicking on anything.
-        dbHelper = new MyDatabaseHelper(this, "SongLibrary.db", null, 1);
-        dbHelper.getWritableDatabase();
 
         // Add song data into the table "Song" in the database "SongLibrary.db"
-        Button addaNewSong = (Button) findViewById(R.id.addanewsong_finish_button);
+        final Button addaNewSong = (Button) findViewById(R.id.addanewsong_finish_button);
         addaNewSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                SQLiteDatabase db = CommonDatabase.getSqliteObject(addanewsongActivity.this, "SongLibrary");
                 ContentValues values = new ContentValues();
 
                 EditText newSong_name = (EditText) findViewById(R.id.editText_newSong_name);
@@ -76,13 +77,49 @@ public class addanewsongActivity extends AppCompatActivity {
                 values.put("note", note);
                 values.put("practiced", 0);
 
-                // Put the data group into the SongLibray.db database.
-                db.insert("Song", null, values);
+                // If finish adding a song...
+                if((name.trim().length() != 0) && (note.trim().length() != 0)){
+                    // Put the data group into the SongLibray.db database.
+                    db.insert("Song", null, values);
 
-                // Clear the "container" values.
-                values.clear();
+                    // Jump to SongInfo page to display the new added song.
+                    Intent intent = new Intent(addanewsongActivity.this, SongInfo.class);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", name);
+                    bundle.putString("singer", singer);
+                    bundle.putString("style", style);
+                    bundle.putString("language", language);
+                    bundle.putString("time", time);
+                    bundle.putString("song_key", key);
+                    bundle.putString("instruments", instruments);
+                    bundle.putString("note", note);
+                    bundle.putString("practiced", "0");
+                    intent.putExtras(bundle);
+
+                    startActivity(intent);
+
+                    // Clear the "container" values.
+                    values.clear();
+
+                    Toast.makeText(addanewsongActivity.this,
+                            "You have added a new song!", Toast.LENGTH_LONG).show();
+
+                    addanewsongActivity.this.finish();
+                }
+                //
+                else{
+                    Toast.makeText(addanewsongActivity.this,
+                            "You haven't finished adding a song.", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
             }
         });
+
+
 
 
 

@@ -2,7 +2,10 @@ package com.example.collaborativeband;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.TransitionInflater;
 import android.view.View;
+import android.view.Window;
 
 import com.example.collaborativeband.database.MyDatabaseHelper;
 import com.example.collaborativeband.ui.SongRecognizing;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -83,5 +88,7 @@ public class MainActivity extends AppCompatActivity {
             });*/
 
     }
+
+
 }
 

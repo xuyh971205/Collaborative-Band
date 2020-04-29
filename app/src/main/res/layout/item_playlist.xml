@@ -3,49 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
 
-    <!--androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="1dp">
+        android:orientation="horizontal"
+        android:padding="28dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/item_playlist_image"
-                android:layout_width="match_parent"
-                android:layout_height="123dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/audience" />
+            <TextView
+                android:id="@+id/item_playlist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DE000000"
+                android:textSize="18sp"
+                tools:text="Rehearsal for Gig" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:id="@+id/item_playlist_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#DE000000"
-                    android:textSize="16dp"
-                    tools:text="Rehearsal for Gig" />
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/item_playlist_date"
@@ -53,54 +37,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12dp"
+                    android:textSize="14dp"
                     tools:text="25/03/2019" />
 
+                <TextView
+                    android:id="@+id/item_playlist_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    tools:text="5 songs" />
             </LinearLayout>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/item_playlist_image"
-            android:layout_width="match_parent"
-            android:layout_height="123dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/audience" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/item_playlist_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#DE000000"
-                android:textSize="16dp"
-                tools:text="Rehearsal for Gig" />
-
-            <TextView
-                android:id="@+id/item_playlist_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="12dp"
-                tools:text="25/03/2019" />
-
-        </LinearLayout>
-
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/item_playlist_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:layout_margin="28dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/audience" />
 
 </FrameLayout>

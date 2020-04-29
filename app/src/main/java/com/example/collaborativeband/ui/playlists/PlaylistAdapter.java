@@ -4,83 +4,57 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.collaborativeband.R;
+import com.example.collaborativeband.ui.library.Song;
+import com.example.collaborativeband.ui.library.SongAdapter;
 
 import java.util.List;
 
-public class PlaylistAdapter extends BaseAdapter {
+public class PlaylistAdapter extends ArrayAdapter<Playlist> {
+    private int resourceId;
 
-    private Context mContext;
-
-    // For loading item_playlist 's layout
-    private LayoutInflater mInflater;
-    private List<Playlist> mDatas;
-
-    public PlaylistAdapter(Context context, List<Playlist> datas) {
-
-        // Assigning values.
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-        mDatas = datas;
-    }
-
-    @Override
-    public int getCount() {
-        return mDatas.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mDatas.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public PlaylistAdapter(@NonNull Context context, int ItemView, List<Playlist> objects) {
+        super(context, ItemView, objects);
+        resourceId = ItemView;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        PlaylistAdapter.ViewHolder viewHolder = null;
+        Playlist playlist = getItem(position);
+        View view;
+        ViewHolder viewHolder;
 
         if (convertView == null){
-
-            convertView = mInflater.inflate(R.layout.item_playlist, parent, false);
-
-            viewHolder = new PlaylistAdapter.ViewHolder();
-
-            /**
-             * 获取子布局中三个控件：ImageView TextView TextView
-             */
-            viewHolder.mIvImg = convertView.findViewById(R.id.item_playlist_image);
-            viewHolder.mTvName = convertView.findViewById(R.id.item_playlist_name);
-            viewHolder.mTvDate = convertView.findViewById(R.id.item_playlist_date);
-
-            convertView.setTag(viewHolder);
+            view = LayoutInflater.from(getContext()).inflate(resourceId, parent,
+                    false);
+            viewHolder = new ViewHolder();
+            viewHolder.playlistImage = (ImageView) view.findViewById (R.id.item_playlist_image);
+            viewHolder.playlistName = (TextView) view.findViewById (R.id.item_playlist_name);
+            viewHolder.playlistDate = (TextView) view.findViewById (R.id.item_playlist_date);
+            view.setTag(viewHolder); // store viewHolder in view
         }
         else {
-            viewHolder= (PlaylistAdapter.ViewHolder) convertView.getTag();
+            view = convertView;
+            viewHolder = (PlaylistAdapter.ViewHolder) view.getTag(); // get viewHolder again
         }
 
-        Playlist playlist = mDatas.get(position);
-        viewHolder.mIvImg.setImageResource(playlist.getImgId());
-        viewHolder.mTvName.setText(playlist.getName());
-        viewHolder.mTvDate.setText(playlist.getDate());
+        viewHolder.playlistImage.setImageResource(playlist.getImgId());
+        viewHolder.playlistName.setText(playlist.getName());
+        viewHolder.playlistDate.setText(playlist.getDate());
 
-        return convertView;
+        return view;
     }
 
-    /**
-     * 内部类：可省去findViewById的时间
-     * Inner class: save the time of findViewById()
-     */
-    public static class ViewHolder {
-        ImageView mIvImg;
-        TextView mTvName;
-        TextView mTvDate;
+    public class ViewHolder {
+        ImageView playlistImage;
+        TextView playlistName;
+        TextView playlistDate;
     }
 }

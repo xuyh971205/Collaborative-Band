@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.collaborativeband.R;
 import com.example.collaborativeband.ui.addanewplaylist.addanewplaylistActivity;
+import com.example.collaborativeband.ui.library.SongAdapter;
+import com.example.collaborativeband.ui.library.SongInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +28,7 @@ import java.util.List;
 public class PlaylistsFragment extends Fragment {
 
     private PlaylistsViewModel playlistsViewModel;
-    private ListView mLvMsgList;
-    private List<Playlist> mDatas = new ArrayList<>();
-    private PlaylistAdapter mAdapter;
-
-    private Button btn1;
+    private List<Playlist> playlistList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,23 +58,44 @@ public class PlaylistsFragment extends Fragment {
             }
         });
 
+        ListView listView = getActivity().findViewById(R.id.listview_PlaylistList);
+
         //
+        initFruits();
 
-        mLvMsgList = getActivity().findViewById(R.id.listview_PlaylistList);
+        PlaylistAdapter adapter = new PlaylistAdapter(getActivity(), R.layout.item_playlist, playlistList);
 
-        /**
-         * 多调用两次，数据会更多
-         */
-        mDatas.addAll(PlaylistsListHolder.generatePlaylistList());
-        mDatas.addAll(PlaylistsListHolder.generatePlaylistList());
+        listView.setAdapter(adapter);
 
-        mAdapter = new PlaylistAdapter(this.getContext(), mDatas);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Turn to SongInfo page, not including data now.
+                Intent intent = new Intent(getActivity(), PlaylistInfo.class);
 
-        mLvMsgList.setAdapter(mAdapter);
+                //intent.setAction("The pass data");
+                String string = "Hello World!";
+                intent.putExtra("name", string);
 
+                startActivity(intent);
 
+                // Use the following lines to pass data.
+                /*Bundle bundle = new Bundle();
+                bundle.putString("key_height", fieldHeight.getText().toString());
+                bundle.putString("key_weight", fieldWeight.getText().toString());
+                intent.putExtras(bundle);*/
 
+            }
+        });
 
+    }
+
+    private void initFruits() {
+        for (int i = 0; i < 3; i++) {
+            Playlist apple = new Playlist(1, "Rehearsal", "25/03/2019", "3pm",
+                    "4pm", "Flogsta", "None", R.drawable.audience);
+            playlistList.add(apple);
+        }
     }
 }
 

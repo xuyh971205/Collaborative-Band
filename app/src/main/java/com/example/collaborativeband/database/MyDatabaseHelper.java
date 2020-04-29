@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
+
     public static final String CREATE_LIBRARY = "create table Song ("
             + "id integer primary key autoincrement, "
             + "name text, "

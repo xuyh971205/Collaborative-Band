@@ -14,12 +14,12 @@ public class Playlist {
     private String endAt;
     private String location;
     private String note;
-    ArrayList<Song> songs = new ArrayList<>();
+    //ArrayList<Song> songs = new ArrayList<>();
     private int imgId;
 
 
-    Gson gson = new Gson();
-    String inputString = gson.toJson(songs);
+    //Gson gson = new Gson();
+    //String inputString = gson.toJson(songs);
 
 
     //--------------Functions-----------------------
@@ -27,7 +27,7 @@ public class Playlist {
     }
 
     public Playlist(int id, String name, String date, String startAt, String endAt,
-                    String location, String note, ArrayList<Song> songs, int imgId){
+                    String location, String note, int imgId){
         this.id = id;
         this.name = name;
         this.date = date;
@@ -35,7 +35,7 @@ public class Playlist {
         this.endAt = endAt;
         this.location = location;
         this.note = note;
-        this.songs = songs;
+        //this.songs = songs;
         this.imgId = imgId;
     }
 
@@ -68,9 +68,9 @@ public class Playlist {
         return note;
     }
 
-    public ArrayList<Song> getSongs(){
+    /*public ArrayList<Song> getSongs(){
         return songs;
-    }
+    }*/
 
     /*
     public String getSongById(int id){
@@ -112,9 +112,9 @@ public class Playlist {
         this.note = note;
     }
 
-    public void setSongs(ArrayList<Song> songs){
+    /*public void setSongs(ArrayList<Song> songs){
         this.songs = songs;
-    }
+    }*/
 
     public void setImgId(int imgId){
         this.imgId = imgId;

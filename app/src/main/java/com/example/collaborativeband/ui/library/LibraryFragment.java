@@ -1,6 +1,8 @@
 package com.example.collaborativeband.ui.library;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,10 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.collaborativeband.R;
+import com.example.collaborativeband.database.CommonDatabase;
 import com.example.collaborativeband.ui.addanewsong.addanewsongActivity;
 
 import java.util.ArrayList;
@@ -22,7 +26,6 @@ import java.util.List;
 public class LibraryFragment extends Fragment {
 
     private LibraryViewModel libraryViewModel;
-
     private List<Song> songList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,13 +60,54 @@ public class LibraryFragment extends Fragment {
             }
         });
 
+
+        SQLiteDatabase db = CommonDatabase.getSqliteObject(getActivity(), "SongLibrary");
+
+        Cursor cursor = db.query("Song", null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Get data from db.
+                String name = cursor.getString(cursor.getColumnIndex
+                        ("name"));
+                String singer = cursor.getString(cursor.getColumnIndex
+                        ("singer"));
+                String time = cursor.getString(cursor.getColumnIndex
+                        ("time"));
+                String style = cursor.getString(cursor.getColumnIndex
+                        ("style"));
+                String language = cursor.getString(cursor.getColumnIndex
+                        ("language"));
+                String song_key = cursor.getString(cursor.getColumnIndex
+                        ("song_key"));
+                String instruments = cursor.getString(cursor.getColumnIndex
+                        ("instruments"));
+                String note = cursor.getString(cursor.getColumnIndex
+                        ("note"));
+                int prof = cursor.getInt(cursor.getColumnIndex
+                        ("practiced"));
+
+                // Print them out.
+                Song song = new Song();
+                song.setName(name);
+                song.setSinger(singer);
+                song.setTime(time);
+                song.setStyle(style);
+                song.setLanguage(language);
+                song.setKey(song_key);
+                song.setInstruments(instruments);
+                song.setNote(note);
+                song.setProf(prof);
+
+                songList.add(song);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
         ListView listView = getActivity().findViewById(R.id.listview_SongList);
 
-        //
-        initFruits();
-
         SongAdapter adapter = new SongAdapter(getActivity(), R.layout.item_song, songList);
-
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,30 +116,26 @@ public class LibraryFragment extends Fragment {
                 // Turn to SongInfo page, not including data now.
                 Intent intent = new Intent(getActivity(), SongInfo.class);
 
-                //intent.setAction("The pass data");
-                String string = "Hello World!";
-                intent.putExtra("name", string);
-
-                startActivity(intent);
+                Song song = songList.get(position);
 
                 // Use the following lines to pass data.
-                /*Bundle bundle = new Bundle();
-                bundle.putString("key_height", fieldHeight.getText().toString());
-                bundle.putString("key_weight", fieldWeight.getText().toString());
-                intent.putExtras(bundle);*/
+                Bundle bundle = new Bundle();
+                bundle.putString("name", song.getName());
+                bundle.putString("singer", song.getSinger());
+                bundle.putString("style", song.getStyle());
+                bundle.putString("language", song.getLanguage());
+                bundle.putString("time", song.getTime());
+                bundle.putString("song_key", song.getKey());
+                bundle.putString("instruments", song.getInstruments());
+                bundle.putString("note", song.getNote());
+                bundle.putInt("practiced", song.getProf());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
 
             }
         });
 
     }
 
-    private void initFruits() {
-        for (int i = 0; i < 5; i++) {
-            Song apple = new Song(1, "Old Days", "XHUI", "Metal", "English",
-                    "4m32s", "#C", "Guitar, bass, drum", "None.",
-                    "1234", R.drawable.audience, 1);
-            songList.add(apple);
-
-        }
-    }
 }
