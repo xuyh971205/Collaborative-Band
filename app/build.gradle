@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.2.1'
     implementation 'com.google.code.gson:gson:2.8.2'
 
+
 }

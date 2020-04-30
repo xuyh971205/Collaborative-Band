@@ -66,8 +66,12 @@
         android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        tools:background="@color/profGrade2" />
+        tools:background="@color/profGrade2"
+        android:stateListAnimator="@null"
+        />
 
 
 
 </FrameLayout>
+
+

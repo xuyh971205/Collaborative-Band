@@ -53,7 +53,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -307,10 +307,12 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="16dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginTop="28dp"
                     android:elevation="0dp"
-                    android:stateListAnimator="@null"
-                    app:cardCornerRadius="4dp">
+                    app:cardCornerRadius="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -322,13 +324,41 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="8dp"
                             android:gravity="center"
                             android:text="You have practiced this songs for "
                             android:textColor="#DE000000"
-                            android:textSize="20dp" />
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/activity_song_info_practiced_times"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center"
+                            tools:text="4"
+                            tools:textColor="#DE000000"
+                            android:textSize="60sp"/>
+
+                        <Button
+                            android:id="@+id/activity_song_info_add_practiced_time_button"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:background="@drawable/shape_button_practiced"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:stateListAnimator="@null"
+                            android:text=" Practiced + 1 "
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 

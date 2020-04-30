@@ -7,14 +7,14 @@
     tools:context=".ui.addanewsong.addanewsongActivity">
 
     <LinearLayout
-        android:id="@+id/addanewsong_parent_layout"
+        android:id="@+id/editthesong_parent_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_addanewsong"
+            android:id="@+id/toolbar_editthesong"
             style="@style/ToolbarStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -26,7 +26,7 @@
             app:popupTheme="@style/OverflowMenuStyle"
             app:titleTextColor="#FFFFFF"
             app:navigationIcon="@drawable/ic_close"
-            app:title="Add a new song into library">
+            app:title="Edit the song">
 
             <Button
                 android:id="@+id/addanewsong_finish_button"
