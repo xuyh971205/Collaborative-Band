@@ -106,11 +106,13 @@ public class LibraryFragment extends Fragment {
         cursor.close();
 
 
-
         ListView listView = getActivity().findViewById(R.id.listview_SongList);
 
         SongAdapter adapter = new SongAdapter(getActivity(), R.layout.item_song, songList);
+
         listView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
 
         setListViewHeightBasedOnChildren(listView);
 

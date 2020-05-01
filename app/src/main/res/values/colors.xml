@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FF743F</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#FF743F</color>
     <color name="statusBarColor">#000000</color>
     <color name="profGrade1">#0DFF743F</color>
     <color name="profGrade2">#40FF743F</color>
