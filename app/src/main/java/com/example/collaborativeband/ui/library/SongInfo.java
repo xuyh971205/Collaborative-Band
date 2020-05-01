@@ -130,7 +130,6 @@ public class SongInfo extends AppCompatActivity {
                                 .create();
 
                         alertDialog2.show();
-
                         break;
 
                     default:
