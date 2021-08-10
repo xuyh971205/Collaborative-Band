@@ -29,7 +29,7 @@ public class addanewsongActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addanewsong);
 
-        // finish this activity by clicking on the close button.
+       
         Toolbar toolbar;
         toolbar = findViewById(R.id.toolbar_addanewsong);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
